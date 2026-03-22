@@ -269,8 +269,10 @@ function WordPuzzle({ onBack }) {
       </div>
 
       {isSuccess && (
-        <div className="success-banner anim-pop-in anim-bounce">
-          だいせいかい！✨
+        <div className="success-banner-wrapper">
+          <div className="success-banner anim-pop-in anim-bounce">
+            だいせいかい！✨
+          </div>
         </div>
       )}
     </div>
@@ -308,28 +310,28 @@ function FlagQuiz({ onBack }) {
         <div style={{width: '60px'}}></div>
       </div>
       <div className="puzzle-container" style={{justifyContent: 'center', gap: '20px'}}>
-        <div className="puzzle-image-area" style={{ flex: '0 1 auto', margin: '10px 0' }}>
-          <div className="puzzle-emoji anim-pulse" style={{ fontSize: 'clamp(7rem, 20vw, 12rem)', filter: 'drop-shadow(2px 4px 6px rgba(0,0,0,0.15))' }}>
+        <div className="puzzle-image-area" style={{ flex: '0 1 auto', margin: '0' }}>
+          <div className="puzzle-emoji anim-pulse" style={{ fontSize: 'clamp(5rem, 15vh, 10rem)', filter: 'drop-shadow(2px 4px 6px rgba(0,0,0,0.15))' }}>
             {currentQuiz.sign}
           </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%', maxWidth: '600px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', maxWidth: '600px', alignItems: 'center' }}>
           {currentQuiz.options.map((opt) => (
             <button 
               key={opt.id} 
               className="btn"
               style={{
                 backgroundColor: failOption === opt ? '#ffcccc' : 'white',
-                fontSize: 'clamp(1.2rem, 4.5vw, 2.5rem)',
-                padding: 'clamp(10px, 3vh, 20px) 10px',
+                fontSize: 'clamp(1.1rem, 4.5vw, 2.2rem)',
+                padding: '10px 10px',
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                gap: '15px',
+                gap: '10px',
                 transform: failOption === opt ? 'translateX(10px)' : 'none',
                 transition: 'transform 0.1s, background-color 0.2s',
-                boxShadow: failOption === opt ? '0 0 0 transparent' : '0 6px 0 var(--text-color)',
+                boxShadow: failOption === opt ? '0 0 0 transparent' : '0 4px 0 var(--text-color)',
                 whiteSpace: 'nowrap'
               }}
               onClick={() => handleOptionClick(opt)}
@@ -340,7 +342,11 @@ function FlagQuiz({ onBack }) {
           ))}
         </div>
       </div>
-      {isSuccess && <div className="success-banner anim-pop-in anim-bounce">だいせいかい！✨</div>}
+      {isSuccess && (
+        <div className="success-banner-wrapper">
+          <div className="success-banner anim-pop-in anim-bounce">だいせいかい！✨</div>
+        </div>
+      )}
     </div>
   );
 }
