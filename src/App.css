@@ -85,6 +85,7 @@
 }
 .menu-btn.blue { background-color: var(--secondary-color); }
 .menu-btn.green { background-color: var(--accent-color); }
+.menu-btn.pink { background-color: var(--primary-color); }
 
 /* Hiragana Tap */
 .hiragana-grid {
