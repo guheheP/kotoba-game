@@ -15,16 +15,85 @@ const hiraganaData = [
   { char: 'さ', word: 'さる', emoji: '🐒' },
   { char: 'し', word: 'しまうま', emoji: '🦓' },
   { char: 'す', word: 'すいか', emoji: '🍉' },
-  { char: 'せ', word: 'せっぱんだ', emoji: '🐼' }, // ぱんだ
+  { char: 'せ', word: 'せみ', emoji: '🪲' }, 
   { char: 'そ', word: 'そら', emoji: '☁️' }
 ];
 
-const puzzleData = [
-  { word: 'いぬ', emoji: '🐶', options: ['あ', 'い', 'う', 'ぬ', 'め', 'つ'] },
-  { word: 'くるま', emoji: '🚗', options: ['く', 'ろ', 'ま', 'め', 'る', 'あ'] },
-  { word: 'りんご', emoji: '🍎', options: ['り', 'ん', 'み', 'ご', 'こ', 'る'] },
-  { word: 'いちご', emoji: '🍓', options: ['ち', 'い', 'と', 'ご', 'ば', 'あ'] },
+const puzzleWords = [
+  { word: 'いぬ', emoji: '🐶' },
+  { word: 'ねこ', emoji: '🐱' },
+  { word: 'うさぎ', emoji: '🐇' },
+  { word: 'くるま', emoji: '🚗' },
+  { word: 'りんご', emoji: '🍎' },
+  { word: 'いちご', emoji: '🍓' },
+  { word: 'ばなな', emoji: '🍌' },
+  { word: 'みかん', emoji: '🍊' },
+  { word: 'ぶどう', emoji: '🍇' },
+  { word: 'めろん', emoji: '🍈' },
+  { word: 'すいか', emoji: '🍉' },
+  { word: 'もも', emoji: '🍑' },
+  { word: 'きゅうり', emoji: '🥒' },
+  { word: 'とまと', emoji: '🍅' },
+  { word: 'ひこうき', emoji: '✈️' },
+  { word: 'でんしゃ', emoji: '🚃' },
+  { word: 'ふね', emoji: '🚢' },
+  { word: 'じてんしゃ', emoji: '🚲' },
+  { word: 'ぱんだ', emoji: '🐼' },
+  { word: 'らいおん', emoji: '🦁' },
+  { word: 'しまうま', emoji: '🦓' },
+  { word: 'いるか', emoji: '🐬' },
+  { word: 'かえる', emoji: '🐸' },
+  { word: 'さかな', emoji: '🐟' },
+  { word: 'とけい', emoji: '⌚' },
+  { word: 'めがね', emoji: '👓' },
+  { word: 'かさ', emoji: '☂️' },
+  { word: 'ぼうし', emoji: '🧢' },
+  { word: 'かばん', emoji: '👜' },
+  { word: 'くつ', emoji: '👞' },
+  { word: 'ほん', emoji: '📕' },
+  { word: 'てれび', emoji: '📺' },
+  { word: 'はさみ', emoji: '✂️' },
+  { word: 'えんぴつ', emoji: '✏️' },
+  { word: 'おにぎり', emoji: '🍙' },
+  { word: 'けーき', emoji: '🍰' },
+  { word: 'あいす', emoji: '🍦' },
+  { word: 'たいよう', emoji: '☀️' },
+  { word: 'つき', emoji: '🌙' },
+  { word: 'ほし', emoji: '⭐' }
 ];
+
+const allHiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽきゃきゅきょしゃしゅしょちゃちゅちょにゃにゅにょひゃひゅひょみゃみゅみょりゃりゅりょ".split('');
+
+function generatePuzzle() {
+  const item = puzzleWords[Math.floor(Math.random() * puzzleWords.length)];
+  const targetChars = item.word.split('');
+  
+  // スマホで3列に綺麗に収まるよう、選択肢の数は最低6個（文字数が多い場合は9個など）にする
+  const numOptions = Math.max(6, Math.ceil(targetChars.length / 3) * 3);
+  
+  // まずは正解の文字を選択肢に入れる
+  const options = targetChars.map(char => ({ char, isTarget: true }));
+  
+  // ダミーの文字を補充
+  while (options.length < numOptions) {
+    const randomChar = allHiragana[Math.floor(Math.random() * allHiragana.length)];
+    // 追加済みのダミーやターゲット文字と被らないようにする
+    if (!options.some(opt => opt.char === randomChar)) {
+      options.push({ char: randomChar, isTarget: false });
+    }
+  }
+  
+  // 選択肢の順番をシャッフル
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+  
+  // 選択肢ごとに一意のIDを付与（同じ文字が複数ある場合に対応するため）
+  const optionsWithIds = options.map((opt, id) => ({ ...opt, id }));
+  
+  return { ...item, options: optionsWithIds, targetChars };
+}
 
 function Home({ setView }) {
   return (
@@ -80,30 +149,36 @@ function HiraganaTap({ onBack }) {
 }
 
 function WordPuzzle({ onBack }) {
-  const [level, setLevel] = useState(0);
-  const [slots, setSlots] = useState([]);
+  const [currentPuzzle, setCurrentPuzzle] = useState(null);
+  const [slots, setSlots] = useState([]); // Array of {id, char}
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const currentPuzzle = puzzleData[level % puzzleData.length];
-  const targetChars = currentPuzzle.word.split('');
-
+  // 初期化時にランダムな問題をセット
   useEffect(() => {
-    setSlots([]);
-    setIsSuccess(false);
-  }, [level]);
+    setCurrentPuzzle(generatePuzzle());
+  }, []);
 
-  const handlePieceClick = (char) => {
+  if (!currentPuzzle) return null;
+
+  const targetChars = currentPuzzle.targetChars;
+
+  const handlePieceClick = (piece) => {
     if (slots.length < targetChars.length && !isSuccess) {
-      const newSlots = [...slots, char];
+      const newSlots = [...slots, piece];
       setSlots(newSlots);
 
       if (newSlots.length === targetChars.length) {
-        if (newSlots.join('') === currentPuzzle.word) {
+        const formedWord = newSlots.map(s => s.char).join('');
+        if (formedWord === currentPuzzle.word) {
           setIsSuccess(true);
           setTimeout(() => {
-            setLevel(prev => prev + 1);
+            // 次のランダムな問題へ移行
+            setCurrentPuzzle(generatePuzzle());
+            setSlots([]);
+            setIsSuccess(false);
           }, 2000);
         } else {
+          // 不正解の場合は少し待ってからリセット
           setTimeout(() => setSlots([]), 500);
         }
       }
@@ -126,22 +201,25 @@ function WordPuzzle({ onBack }) {
         <div className="puzzle-slots">
           {targetChars.map((_, i) => (
             <div key={i} className={`puzzle-slot ${slots[i] ? 'filled' : ''}`}>
-              {slots[i] || ''}
+              {slots[i] ? slots[i].char : ''}
             </div>
           ))}
         </div>
 
         <div className="puzzle-options">
-          {currentPuzzle.options.map((char, i) => (
-            <button 
-              key={i} 
-              className="puzzle-piece"
-              onClick={() => handlePieceClick(char)}
-              disabled={isSuccess || slots.includes(char)}
-            >
-              {char}
-            </button>
-          ))}
+          {currentPuzzle.options.map((piece) => {
+            const isUsed = slots.some(s => s.id === piece.id);
+            return (
+              <button 
+                key={piece.id} 
+                className="puzzle-piece"
+                onClick={() => handlePieceClick(piece)}
+                disabled={isSuccess || isUsed}
+              >
+                {piece.char}
+              </button>
+            );
+          })}
         </div>
       </div>
 
