@@ -164,17 +164,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   flex: 1;
-  gap: 20px;
-  padding-bottom: 30px;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
 .puzzle-image-area {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
-  min-height: 200px;
+  flex: 0 1 auto;
+  margin: 10px 0;
 }
 
 .puzzle-emoji {
@@ -184,19 +185,19 @@
 
 .puzzle-slots {
   display: flex;
-  gap: clamp(10px, 2vw, 25px);
+  gap: clamp(10px, 3vw, 25px);
   margin-bottom: 20px;
 }
 
 .puzzle-slot {
-  width: clamp(40px, 12vw, 110px);
-  height: clamp(40px, 12vw, 110px);
+  width: clamp(55px, 15vw, 100px);
+  height: clamp(55px, 15vw, 100px);
   border: 4px dashed #ccc;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(1.5rem, 8vw, 4.5rem);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: bold;
   color: var(--text-color);
   background: white;
@@ -209,17 +210,24 @@
 }
 
 .puzzle-options {
-  display: flex;
-  gap: clamp(10px, 2vw, 25px);
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(15px, 4vw, 25px);
+  width: 100%;
+  max-width: 450px;
+}
+
+@media (min-width: 600px) {
+  .puzzle-options {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 800px;
+  }
 }
 
 .puzzle-piece {
-  width: clamp(40px, 11vw, 100px);
-  height: clamp(40px, 11vw, 100px);
-  font-size: clamp(1.5rem, 6vw, 4rem);
+  width: 100%;
+  aspect-ratio: 1;
+  font-size: clamp(2rem, 6vw, 4rem);
   border-radius: 20px;
   border: 4px solid var(--text-color);
   box-shadow: 0 6px 0 var(--text-color);
