@@ -96,7 +96,17 @@ const flagQuizData = [
   { sign: '🇵🇭', correct: { text: 'フィリピン', emoji: '🥭' }, wrong: [{ text: 'タイ', emoji: '🐘' }, { text: 'インドネシア', emoji: '🏝️' }] },
   { sign: '🇸🇬', correct: { text: 'シンガポール', emoji: '🦁' }, wrong: [{ text: 'マレーシア', emoji: '🌴' }, { text: 'タイ', emoji: '🐘' }] },
   { sign: '🇲🇾', correct: { text: 'マレーシア', emoji: '🌴' }, wrong: [{ text: 'シンガポール', emoji: '🦁' }, { text: 'インドネシア', emoji: '🏝️' }] },
-  // 🌎 南北アメリカ
+  { sign: '🇲🇳', correct: { text: 'モンゴル', emoji: '🐎' }, wrong: [{ text: 'ロシア', emoji: '🪆' }, { text: '中国 (ちゅうごく)', emoji: '🐼' }] },
+  { sign: '🇳🇵', correct: { text: 'ネパール', emoji: '🏔️' }, wrong: [{ text: 'インド', emoji: '🍛' }, { text: 'ブータン', emoji: '🐉' }] },
+  { sign: '🇧🇩', correct: { text: 'バングラデシュ', emoji: '🐅' }, wrong: [{ text: 'インド', emoji: '🍛' }, { text: 'パキスタン', emoji: '🕌' }] },
+  { sign: '🇱🇰', correct: { text: 'スリランカ', emoji: '🐘' }, wrong: [{ text: 'インド', emoji: '🍛' }, { text: 'モルディブ', emoji: '🏝️' }] },
+  { sign: '🇲🇻', correct: { text: 'モルディブ', emoji: '🏝️' }, wrong: [{ text: 'インド', emoji: '🍛' }, { text: 'スリランカ', emoji: '🐘' }] },
+  { sign: '🇰🇭', correct: { text: 'カンボジア', emoji: '🛕' }, wrong: [{ text: 'タイ', emoji: '🐘' }, { text: 'ベトナム', emoji: '🍜' }] },
+  { sign: '🇲🇲', correct: { text: 'ミャンマー', emoji: '🛕' }, wrong: [{ text: 'タイ', emoji: '🐘' }, { text: 'インド', emoji: '🍛' }] },
+  { sign: '🇱🇦', correct: { text: 'ラオス', emoji: '🐘' }, wrong: [{ text: 'タイ', emoji: '🐘' }, { text: 'ベトナム', emoji: '🍜' }] },
+  { sign: '🇧🇳', correct: { text: 'ブルネイ', emoji: '🕌' }, wrong: [{ text: 'マレーシア', emoji: '🌴' }, { text: 'インドネシア', emoji: '🏝️' }] },
+  
+  // 🌎 北・中南米
   { sign: '🇺🇸', correct: { text: 'アメリカ', emoji: '🍔' }, wrong: [{ text: 'イギリス', emoji: '☕' }, { text: 'カナダ', emoji: '🍁' }] },
   { sign: '🇨🇦', correct: { text: 'カナダ', emoji: '🍁' }, wrong: [{ text: 'アメリカ', emoji: '🍔' }, { text: 'スイス', emoji: '🧀' }] },
   { sign: '🇲🇽', correct: { text: 'メキシコ', emoji: '🌮' }, wrong: [{ text: 'スペイン', emoji: '🥘' }, { text: 'ブラジル', emoji: '⚽' }] },
@@ -105,6 +115,16 @@ const flagQuizData = [
   { sign: '🇨🇱', correct: { text: 'チリ', emoji: '🗿' }, wrong: [{ text: 'ペルー', emoji: '🦙' }, { text: 'ブラジル', emoji: '⚽' }] },
   { sign: '🇵🇪', correct: { text: 'ペルー', emoji: '🦙' }, wrong: [{ text: 'チリ', emoji: '🗿' }, { text: 'メキシコ', emoji: '🌮' }] },
   { sign: '🇨🇴', correct: { text: 'コロンビア', emoji: '☕' }, wrong: [{ text: 'ブラジル', emoji: '⚽' }, { text: 'アルゼンチン', emoji: '🥩' }] },
+  { sign: '🇨🇺', correct: { text: 'キューバ', emoji: '⚾' }, wrong: [{ text: 'アメリカ', emoji: '🍔' }, { text: 'メキシコ', emoji: '🌮' }] },
+  { sign: '🇯🇲', correct: { text: 'ジャマイカ', emoji: '🏃' }, wrong: [{ text: 'ブラジル', emoji: '⚽' }, { text: 'アメリカ', emoji: '🍔' }] },
+  { sign: '🇻🇪', correct: { text: 'ベネズエラ', emoji: '⚾' }, wrong: [{ text: 'コロンビア', emoji: '☕' }, { text: 'ブラジル', emoji: '⚽' }] },
+  { sign: '🇪🇨', correct: { text: 'エクアドル', emoji: '🐢' }, wrong: [{ text: 'コロンビア', emoji: '☕' }, { text: 'ペルー', emoji: '🦙' }] },
+  { sign: '🇺🇾', correct: { text: 'ウルグアイ', emoji: '🥩' }, wrong: [{ text: 'アルゼンチン', emoji: '🥩' }, { text: 'ブラジル', emoji: '⚽' }] },
+  { sign: '🇵🇾', correct: { text: 'パラグアイ', emoji: '🥩' }, wrong: [{ text: 'アルゼンチン', emoji: '🥩' }, { text: 'ボリビア', emoji: '🦙' }] },
+  { sign: '🇧🇴', correct: { text: 'ボリビア', emoji: '🦙' }, wrong: [{ text: 'ペルー', emoji: '🦙' }, { text: 'ブラジル', emoji: '⚽' }] },
+  { sign: '🇨🇷', correct: { text: 'コスタリカ', emoji: '🐸' }, wrong: [{ text: 'メキシコ', emoji: '🌮' }, { text: 'パナマ', emoji: '🚢' }] },
+  { sign: '🇵🇦', correct: { text: 'パナマ', emoji: '🚢' }, wrong: [{ text: 'コロンビア', emoji: '☕' }, { text: 'コスタリカ', emoji: '🐸' }] },
+
   // 🌍 ヨーロッパ
   { sign: '🇬🇧', correct: { text: 'イギリス', emoji: '☕' }, wrong: [{ text: 'アメリカ', emoji: '🍔' }, { text: 'フランス', emoji: '🥖' }] },
   { sign: '🇫🇷', correct: { text: 'フランス', emoji: '🥖' }, wrong: [{ text: 'イタリア', emoji: '🍕' }, { text: 'ドイツ', emoji: '🌭' }] },
@@ -120,14 +140,63 @@ const flagQuizData = [
   { sign: '🇵🇹', correct: { text: 'ポルトガル', emoji: '🚢' }, wrong: [{ text: 'スペイン', emoji: '🥘' }, { text: 'ブラジル', emoji: '⚽' }] },
   { sign: '🇫🇮', correct: { text: 'フィンランド', emoji: '🎅' }, wrong: [{ text: 'スウェーデン', emoji: '🌲' }, { text: 'ノルウェー', emoji: '🏔️' }] },
   { sign: '🇳🇴', correct: { text: 'ノルウェー', emoji: '🏔️' }, wrong: [{ text: 'スウェーデン', emoji: '🌲' }, { text: 'フィンランド', emoji: '🎅' }] },
-  // 🐨 オセアニア・アフリカ・中東
+  { sign: '🇩🇰', correct: { text: 'デンマーク', emoji: '🧜‍♀️' }, wrong: [{ text: 'ノルウェー', emoji: '🏔️' }, { text: 'スイス', emoji: '🧀' }] },
+  { sign: '🇦🇹', correct: { text: 'オーストリア', emoji: '⛷️' }, wrong: [{ text: 'ドイツ', emoji: '🌭' }, { text: 'スイス', emoji: '🧀' }] },
+  { sign: '🇮🇪', correct: { text: 'アイルランド', emoji: '☘️' }, wrong: [{ text: 'イギリス', emoji: '☕' }, { text: 'スコットランド', emoji: '🏰' }] },
+  { sign: '🇵🇱', correct: { text: 'ポーランド', emoji: '🥟' }, wrong: [{ text: 'ドイツ', emoji: '🌭' }, { text: 'ロシア', emoji: '🪆' }] },
+  { sign: '🇨🇿', correct: { text: 'チェコ', emoji: '🏰' }, wrong: [{ text: 'ドイツ', emoji: '🌭' }, { text: 'オーストリア', emoji: '⛷️' }] },
+  { sign: '🇭🇺', correct: { text: 'ハンガリー', emoji: '🥘' }, wrong: [{ text: 'オーストリア', emoji: '⛷️' }, { text: 'ルーマニア', emoji: '🏰' }] },
+  { sign: '🇷🇴', correct: { text: 'ルーマニア', emoji: '🧛' }, wrong: [{ text: 'ハンガリー', emoji: '🥘' }, { text: 'イタリア', emoji: '🍕' }] },
+  { sign: '🇺🇦', correct: { text: 'ウクライナ', emoji: '🌻' }, wrong: [{ text: 'ロシア', emoji: '🪆' }, { text: 'ポーランド', emoji: '🥟' }] },
+  { sign: '🇮🇸', correct: { text: 'アイスランド', emoji: '🌋' }, wrong: [{ text: 'ノルウェー', emoji: '🏔️' }, { text: 'グリーンランド', emoji: '🧊' }] },
+  { sign: '🇭🇷', correct: { text: 'クロアチア', emoji: '🏖️' }, wrong: [{ text: 'イタリア', emoji: '🍕' }, { text: 'ギリシャ', emoji: '🏛️' }] },
+  { sign: '🇧🇬', correct: { text: 'ブルガリア', emoji: '🌹' }, wrong: [{ text: 'トルコ', emoji: '🕌' }, { text: 'ギリシャ', emoji: '🏛️' }] },
+  { sign: '🇲🇨', correct: { text: 'モナコ', emoji: '🏎️' }, wrong: [{ text: 'フランス', emoji: '🥖' }, { text: 'イタリア', emoji: '🍕' }] },
+  { sign: '🇻🇦', correct: { text: 'バチカン', emoji: '⛪' }, wrong: [{ text: 'イタリア', emoji: '🍕' }, { text: 'スペイン', emoji: '🥘' }] },
+  
+  // 🐨 オセアニア
   { sign: '🇦🇺', correct: { text: 'オーストラリア', emoji: '🐨' }, wrong: [{ text: 'ニュージーランド', emoji: '🥝' }, { text: 'イギリス', emoji: '☕' }] },
   { sign: '🇳🇿', correct: { text: 'ニュージーランド', emoji: '🥝' }, wrong: [{ text: 'オーストラリア', emoji: '🐨' }, { text: 'アイルランド', emoji: '☘️' }] },
+  { sign: '🇫🇯', correct: { text: 'フィジー', emoji: '🏝️' }, wrong: [{ text: 'オーストラリア', emoji: '🐨' }, { text: 'ハワイ', emoji: '🏄' }] },
+  { sign: '🇵🇼', correct: { text: 'パラオ', emoji: '🐠' }, wrong: [{ text: '日本 (にほん)', emoji: '🍣' }, { text: 'フィリピン', emoji: '🥭' }] },
+  { sign: '🇵🇬', correct: { text: 'パプアニューギニア', emoji: '🦜' }, wrong: [{ text: 'インドネシア', emoji: '🏝️' }, { text: 'オーストラリア', emoji: '🐨' }] },
+  { sign: '🇹🇻', correct: { text: 'ツバル', emoji: '🏝️' }, wrong: [{ text: 'フィジー', emoji: '🏝️' }, { text: 'ニュージーランド', emoji: '🥝' }] },
+  { sign: '🇼🇸', correct: { text: 'サモア', emoji: '🏉' }, wrong: [{ text: 'フィジー', emoji: '🏝️' }, { text: 'ニュージーランド', emoji: '🥝' }] },
+  { sign: '🇹🇴', correct: { text: 'トンガ', emoji: '🏉' }, wrong: [{ text: 'サモア', emoji: '🏉' }, { text: 'フィジー', emoji: '🏝️' }] },
+
+  // 🐪 中東・アフリカ
   { sign: '🇹🇷', correct: { text: 'トルコ', emoji: '🕌' }, wrong: [{ text: 'ギリシャ', emoji: '🏛️' }, { text: 'エジプト', emoji: '🐪' }] },
   { sign: '🇪🇬', correct: { text: 'エジプト', emoji: '🐪' }, wrong: [{ text: 'インド', emoji: '🍛' }, { text: 'サウジアラビア', emoji: '🛢️' }] },
   { sign: '🇿🇦', correct: { text: '南アフリカ', emoji: '🦁' }, wrong: [{ text: 'ケニア', emoji: '🦒' }, { text: 'エジプト', emoji: '🐪' }] },
   { sign: '🇰🇪', correct: { text: 'ケニア', emoji: '🦒' }, wrong: [{ text: '南アフリカ', emoji: '🦁' }, { text: 'ナイジェリア', emoji: '🐘' }] },
-  { sign: '🇸🇦', correct: { text: 'サウジアラビア', emoji: '🛢️' }, wrong: [{ text: 'エジプト', emoji: '🐪' }, { text: 'トルコ', emoji: '🕌' }] }
+  { sign: '🇸🇦', correct: { text: 'サウジアラビア', emoji: '🛢️' }, wrong: [{ text: 'エジプト', emoji: '🐪' }, { text: 'トルコ', emoji: '🕌' }] },
+  { sign: '🇦🇪', correct: { text: 'アラブ首長国連邦', emoji: '🐪' }, wrong: [{ text: 'サウジアラビア', emoji: '🛢️' }, { text: 'カタール', emoji: '⚽' }] },
+  { sign: '🇮🇷', correct: { text: 'イラン', emoji: '🕌' }, wrong: [{ text: 'イラク', emoji: '🏜️' }, { text: 'サウジアラビア', emoji: '🛢️' }] },
+  { sign: '🇮🇱', correct: { text: 'イスラエル', emoji: '🕎' }, wrong: [{ text: 'エジプト', emoji: '🐪' }, { text: 'トルコ', emoji: '🕌' }] },
+  { sign: '🇲🇦', correct: { text: 'モロッコ', emoji: '🐪' }, wrong: [{ text: 'エジプト', emoji: '🐪' }, { text: 'スペイン', emoji: '🥘' }] },
+  { sign: '🇳🇬', correct: { text: 'ナイジェリア', emoji: '🐘' }, wrong: [{ text: 'ケニア', emoji: '🦒' }, { text: '南アフリカ', emoji: '🦁' }] },
+  { sign: '🇪🇹', correct: { text: 'エチオピア', emoji: '☕' }, wrong: [{ text: 'ケニア', emoji: '🦒' }, { text: 'エジプト', emoji: '🐪' }] },
+  { sign: '🇲🇬', correct: { text: 'マダガスカル', emoji: '🐒' }, wrong: [{ text: '南アフリカ', emoji: '🦁' }, { text: 'モザンビーク', emoji: '🐘' }] },
+  { sign: '🇨🇮', correct: { text: 'コートジボワール', emoji: '🐘' }, wrong: [{ text: 'ナイジェリア', emoji: '🐘' }, { text: 'ガーナ', emoji: '🍫' }] },
+  { sign: '🇬🇭', correct: { text: 'ガーナ', emoji: '🍫' }, wrong: [{ text: 'コートジボワール', emoji: '🐘' }, { text: 'ナイジェリア', emoji: '🐘' }] },
+  { sign: '🇹🇿', correct: { text: 'タンザニア', emoji: '🦁' }, wrong: [{ text: 'ケニア', emoji: '🦒' }, { text: 'ウガンダ', emoji: '🦍' }] },
+  { sign: '🇸🇳', correct: { text: 'セネガル', emoji: '⚽' }, wrong: [{ text: 'ナイジェリア', emoji: '🐘' }, { text: 'モロッコ', emoji: '🐪' }] },
+  { sign: '🇶🇦', correct: { text: 'カタール', emoji: '⚽' }, wrong: [{ text: 'サウジアラビア', emoji: '🛢️' }, { text: 'アラブ首長国連邦', emoji: '🐪' }] },
+  { sign: '🇯🇴', correct: { text: 'ヨルダン', emoji: '🏜️' }, wrong: [{ text: 'シリア', emoji: '🕌' }, { text: 'サウジアラビア', emoji: '🛢️' }] },
+  { sign: '🇱🇧', correct: { text: 'レバノン', emoji: '🌲' }, wrong: [{ text: 'シリア', emoji: '🕌' }, { text: 'ヨルダン', emoji: '🏜️' }] },
+  
+  // 🎌 その他の面白そうな国や地域
+  { sign: '🇨🇾', correct: { text: 'キプロス', emoji: '🏝️' }, wrong: [{ text: 'ギリシャ', emoji: '🏛️' }, { text: 'トルコ', emoji: '🕌' }] },
+  { sign: '🇲🇹', correct: { text: 'マルタ', emoji: '🏰' }, wrong: [{ text: 'イタリア', emoji: '🍕' }, { text: 'モナコ', emoji: '🏎️' }] },
+  { sign: '🇸🇲', correct: { text: 'サンマリノ', emoji: '🏰' }, wrong: [{ text: 'イタリア', emoji: '🍕' }, { text: 'バチカン', emoji: '⛪' }] },
+  { sign: '🇫🇴', correct: { text: 'フェロー諸島', emoji: '🐑' }, wrong: [{ text: 'デンマーク', emoji: '🧜‍♀️' }, { text: 'アイスランド', emoji: '🌋' }] },
+  { sign: '🇬🇱', correct: { text: 'グリーンランド', emoji: '🧊' }, wrong: [{ text: 'カナダ', emoji: '🍁' }, { text: 'アイスランド', emoji: '🌋' }] },
+  { sign: '🇧🇸', correct: { text: 'バハマ', emoji: '🏝️' }, wrong: [{ text: 'ジャマイカ', emoji: '🏃' }, { text: 'キューバ', emoji: '⚾' }] },
+  { sign: '🇩🇴', correct: { text: 'ドミニカ共和国', emoji: '⚾' }, wrong: [{ text: 'キューバ', emoji: '⚾' }, { text: 'プエルトリコ', emoji: '🏖️' }] },
+  { sign: '🇵🇷', correct: { text: 'プエルトリコ', emoji: '🏖️' }, wrong: [{ text: 'ドミニカ共和国', emoji: '⚾' }, { text: 'アメリカ', emoji: '🍔' }] },
+  { sign: '🇬🇮', correct: { text: 'ジブラルタル', emoji: '🐒' }, wrong: [{ text: 'スペイン', emoji: '🥘' }, { text: 'イギリス', emoji: '☕' }] },
+  { sign: '🇸🇨', correct: { text: 'セーシェル', emoji: '🐢' }, wrong: [{ text: 'モルディブ', emoji: '🏝️' }, { text: 'マダガスカル', emoji: '🐒' }] },
+  { sign: '🇲🇺', correct: { text: 'モーリシャス', emoji: '🦤' }, wrong: [{ text: 'マダガスカル', emoji: '🐒' }, { text: 'セーシェル', emoji: '🐢' }] }
 ];
 
 function generateFlagQuiz() {
