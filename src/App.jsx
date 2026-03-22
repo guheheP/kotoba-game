@@ -309,7 +309,7 @@ function FlagQuiz({ onBack }) {
         <h2 style={{color: "#ff8c00", fontSize: "clamp(1.5rem, 5vw, 2.5rem)"}}>どこの くに？</h2>
         <div style={{width: '60px'}}></div>
       </div>
-      <div className="puzzle-container" style={{justifyContent: 'center', gap: '20px'}}>
+      <div className="puzzle-container" style={{ gap: '20px' }}>
         <div className="puzzle-image-area" style={{ flex: '0 1 auto', margin: '0' }}>
           <div className="puzzle-emoji anim-pulse" style={{ fontSize: 'clamp(5rem, 15vh, 10rem)', filter: 'drop-shadow(2px 4px 6px rgba(0,0,0,0.15))' }}>
             {currentQuiz.sign}

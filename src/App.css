@@ -165,11 +165,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: clamp(10px, 3vh, 30px);
   flex: 1;
   width: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.puzzle-container::before,
+.puzzle-container::after {
+  content: '';
+  flex: 1 1 0%;
 }
 
 .puzzle-image-area {
