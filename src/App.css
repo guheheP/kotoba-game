@@ -85,7 +85,6 @@
 }
 .menu-btn.blue { background-color: var(--secondary-color); }
 .menu-btn.green { background-color: var(--accent-color); }
-.menu-btn.pink { background-color: var(--primary-color); }
 .menu-btn.yellow { background-color: #ffdfba; }
 
 /* Hiragana Tap */
@@ -256,7 +255,7 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(3rem, 12vw, 8rem);
+  font-size: clamp(2.5rem, 10vw, 8rem);
   font-weight: bold;
   color: #ffcc00;
   text-shadow: 
@@ -266,5 +265,6 @@
      3px  3px 0 var(--text-color);
   z-index: 200;
   pointer-events: none;
-  white-space: nowrap;
+  width: 100%;
+  text-align: center;
 }
