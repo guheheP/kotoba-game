@@ -1,0 +1,260 @@
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(15px, 3vw, 30px);
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px 30px 10px;
+}
+
+.back-btn {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  border: 4px solid var(--text-color);
+  box-shadow: 0 4px 0 var(--text-color);
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text-color);
+}
+.back-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--text-color);
+}
+
+.title {
+  font-size: clamp(2rem, 12vw, 5rem);
+  text-align: center;
+  color: var(--primary-color);
+  text-shadow: 
+    -2px -2px 0 var(--text-color),  
+     2px -2px 0 var(--text-color),
+    -2px  2px 0 var(--text-color),
+     2px  2px 0 var(--text-color);
+  width: 100%;
+  margin-bottom: 40px;
+  white-space: nowrap;
+}
+
+/* Home view */
+.home-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .home-menu {
+    flex-direction: column;
+    gap: 50px;
+    align-content: center;
+  }
+}
+
+.menu-btn {
+  width: 100%;
+  max-width: 650px;
+  height: clamp(100px, 15vh, 180px);
+  font-size: clamp(1.5rem, 4.5vw, 3.5rem);
+  border-radius: 30px;
+  white-space: nowrap;
+}
+.menu-btn.blue { background-color: var(--secondary-color); }
+.menu-btn.green { background-color: var(--accent-color); }
+
+/* Hiragana Tap */
+.hiragana-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+  gap: 15px;
+  flex: 1;
+  padding: 10px;
+  align-content: start;
+}
+
+@media (min-width: 768px) {
+  .hiragana-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 25px;
+    padding: 20px;
+  }
+}
+
+.hiragana-btn {
+  font-size: clamp(1.5rem, 6vw, 4rem);
+  padding: 0;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  border: 4px solid var(--text-color);
+  box-shadow: 0 6px 0 var(--text-color);
+}
+.hiragana-btn:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 var(--text-color);
+}
+
+.popup-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.popup-content {
+  background: white;
+  border: 5px solid var(--text-color);
+  border-radius: 30px;
+  padding: clamp(20px, 5vw, 40px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 0 var(--text-color);
+  width: 90%;
+  max-width: 500px;
+}
+
+.popup-emoji {
+  font-size: clamp(5rem, 20vw, 10rem);
+  line-height: 1;
+  filter: drop-shadow(2px 4px 0px rgba(0,0,0,0.2));
+}
+
+.popup-word {
+  font-size: clamp(1.8rem, 8vw, 4.5rem);
+  font-weight: bold;
+  color: var(--primary-color);
+  text-shadow: 
+    -2px -2px 0 var(--text-color),  
+     2px -2px 0 var(--text-color),
+    -2px  2px 0 var(--text-color),
+     2px  2px 0 var(--text-color);
+}
+
+/* Word Puzzle */
+.puzzle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 20px;
+  padding-bottom: 30px;
+}
+
+.puzzle-image-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 200px;
+}
+
+.puzzle-emoji {
+  font-size: clamp(5rem, 20vw, 14rem);
+  filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.1));
+}
+
+.puzzle-slots {
+  display: flex;
+  gap: clamp(10px, 2vw, 25px);
+  margin-bottom: 20px;
+}
+
+.puzzle-slot {
+  width: clamp(40px, 12vw, 110px);
+  height: clamp(40px, 12vw, 110px);
+  border: 4px dashed #ccc;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.5rem, 8vw, 4.5rem);
+  font-weight: bold;
+  color: var(--text-color);
+  background: white;
+}
+.puzzle-slot.filled {
+  border: 4px solid var(--text-color);
+  background: var(--primary-color);
+  color: white;
+  text-shadow: 1px 1px 0px var(--text-color);
+}
+
+.puzzle-options {
+  display: flex;
+  gap: clamp(10px, 2vw, 25px);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+}
+
+.puzzle-piece {
+  width: clamp(40px, 11vw, 100px);
+  height: clamp(40px, 11vw, 100px);
+  font-size: clamp(1.5rem, 6vw, 4rem);
+  border-radius: 20px;
+  border: 4px solid var(--text-color);
+  box-shadow: 0 6px 0 var(--text-color);
+  background: var(--secondary-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.puzzle-piece:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 var(--text-color);
+}
+.puzzle-piece[disabled] {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Success Effect */
+.success-banner {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 
+    -3px -3px 0 var(--text-color),  
+     3px -3px 0 var(--text-color),
+    -3px  3px 0 var(--text-color),
+     3px  3px 0 var(--text-color);
+  z-index: 200;
+  pointer-events: none;
+  white-space: nowrap;
+}
