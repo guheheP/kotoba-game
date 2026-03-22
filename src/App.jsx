@@ -186,6 +186,9 @@ function Home({ setView }) {
       <button className="btn menu-btn pink" onClick={() => setView('sign')}>
         ひょうしき クイズ 🚥
       </button>
+      <button className="btn menu-btn yellow" onClick={() => setView('flag')}>
+        こっき クイズ 🌍
+      </button>
     </div>
   );
 }
@@ -405,6 +408,100 @@ function SignQuiz({ onBack }) {
   );
 }
 
+const flagQuizData = [
+  { sign: '🇯🇵', correct: { text: 'にほん', emoji: '🍙' }, wrong: [{ text: 'あめりか', emoji: '🍔' }, { text: 'ちゅうごく', emoji: '🐼' }] },
+  { sign: '🇺🇸', correct: { text: 'あめりか', emoji: '🍔' }, wrong: [{ text: 'にほん', emoji: '🍙' }, { text: 'いぎりす', emoji: '☕' }] },
+  { sign: '🇬🇧', correct: { text: 'いぎりす', emoji: '☕' }, wrong: [{ text: 'ふらんす', emoji: '🥖' }, { text: 'どいつ', emoji: '🌭' }] },
+  { sign: '🇫🇷', correct: { text: 'ふらんす', emoji: '🥖' }, wrong: [{ text: 'いたりあ', emoji: '🍕' }, { text: 'どいつ', emoji: '🌭' }] },
+  { sign: '🇩🇪', correct: { text: 'どいつ', emoji: '🌭' }, wrong: [{ text: 'ふらんす', emoji: '🥖' }, { text: 'いたりあ', emoji: '🍕' }] },
+  { sign: '🇮🇹', correct: { text: 'いたりあ', emoji: '🍕' }, wrong: [{ text: 'ふらんす', emoji: '🥖' }, { text: 'めきしこ', emoji: '🌮' }] },
+  { sign: '🇨🇳', correct: { text: 'ちゅうごく', emoji: '🐼' }, wrong: [{ text: 'にほん', emoji: '🍙' }, { text: 'かんこく', emoji: '🍲' }] },
+  { sign: '🇰🇷', correct: { text: 'かんこく', emoji: '🍲' }, wrong: [{ text: 'ちゅうごく', emoji: '🐼' }, { text: 'にほん', emoji: '🍙' }] },
+  { sign: '🇧🇷', correct: { text: 'ぶらじる', emoji: '☕' }, wrong: [{ text: 'あめりか', emoji: '🍔' }, { text: 'いんど', emoji: '🍛' }] },
+  { sign: '🇦🇺', correct: { text: 'おーすとらりあ', emoji: '🐨' }, wrong: [{ text: 'かなだ', emoji: '🍁' }, { text: 'いぎりす', emoji: '☕' }] },
+  { sign: '🇨🇦', correct: { text: 'かなだ', emoji: '🍁' }, wrong: [{ text: 'おーすとらりあ', emoji: '🐨' }, { text: 'あめりか', emoji: '🍔' }] },
+  { sign: '🇮🇳', correct: { text: 'いんど', emoji: '🍛' }, wrong: [{ text: 'ちゅうごく', emoji: '🐼' }, { text: 'ぶらじる', emoji: '☕' }] },
+  { sign: '🇪🇸', correct: { text: 'すぺいん', emoji: '🥘' }, wrong: [{ text: 'いたりあ', emoji: '🍕' }, { text: 'ふらんす', emoji: '🥖' }] },
+  { sign: '🇷🇺', correct: { text: 'ろしあ', emoji: '🪆' }, wrong: [{ text: 'どいつ', emoji: '🌭' }, { text: 'かなだ', emoji: '🍁' }] }
+];
+
+function generateFlagQuiz() {
+  const item = flagQuizData[Math.floor(Math.random() * flagQuizData.length)];
+  const options = [{ ...item.correct, isCorrect: true, id: 0 }, { ...item.wrong[0], isCorrect: false, id: 1 }, { ...item.wrong[1], isCorrect: false, id: 2 }];
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+  return { ...item, options };
+}
+
+function FlagQuiz({ onBack }) {
+  const [currentQuiz, setCurrentQuiz] = useState(null);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [failOption, setFailOption] = useState(null);
+
+  useEffect(() => { setCurrentQuiz(generateFlagQuiz()); }, []);
+  if (!currentQuiz) return null;
+
+  const handleOptionClick = (opt) => {
+    if (isSuccess) return;
+    if (opt.isCorrect) {
+      setIsSuccess(true);
+      setTimeout(() => {
+        setCurrentQuiz(generateFlagQuiz());
+        setIsSuccess(false);
+        setFailOption(null);
+      }, 2000);
+    } else {
+      setFailOption(opt);
+      setTimeout(() => setFailOption(null), 1000);
+    }
+  };
+
+  return (
+    <div className="app-container anim-pop-in">
+      <div className="header">
+        <button className="back-btn" onClick={onBack}>⬅</button>
+        <h2 style={{color: "var(--accent-color)", fontSize: "2rem"}}>どこの くに？</h2>
+        <div style={{width: '60px'}}></div>
+      </div>
+      <div className="puzzle-container" style={{justifyContent: 'center', gap: '40px'}}>
+        <div className="puzzle-image-area" style={{ flex: '0 1 auto', margin: '20px 0' }}>
+          <div className="puzzle-emoji anim-pulse" style={{ fontSize: 'clamp(8rem, 25vw, 16rem)', filter: 'drop-shadow(2px 4px 6px rgba(0,0,0,0.15))' }}>
+            {currentQuiz.sign}
+          </div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '500px', alignItems: 'center' }}>
+          {currentQuiz.options.map((opt) => (
+            <button 
+              key={opt.id} 
+              className="btn"
+              style={{
+                backgroundColor: failOption === opt ? '#ffcccc' : 'white',
+                fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
+                padding: '20px',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '20px',
+                transform: failOption === opt ? 'translateX(10px)' : 'none',
+                transition: 'transform 0.1s, background-color 0.2s',
+                boxShadow: failOption === opt ? '0 0 0 transparent' : '0 6px 0 var(--text-color)'
+              }}
+              onClick={() => handleOptionClick(opt)}
+            >
+              <span style={{fontSize: '1.2em'}}>{opt.emoji}</span>
+              <span>{opt.text}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      {isSuccess && <div className="success-banner anim-pop-in anim-bounce">だいせいかい！✨</div>}
+    </div>
+  );
+}
+
 function App() {
   const [view, setView] = useState('home');
 
@@ -414,6 +511,7 @@ function App() {
       {view === 'hiragana' && <HiraganaTap onBack={() => setView('home')} />}
       {view === 'puzzle' && <WordPuzzle onBack={() => setView('home')} />}
       {view === 'sign' && <SignQuiz onBack={() => setView('home')} />}
+      {view === 'flag' && <FlagQuiz onBack={() => setView('home')} />}
     </div>
   );
 }
